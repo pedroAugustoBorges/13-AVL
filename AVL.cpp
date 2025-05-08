@@ -205,14 +205,44 @@ NO* insereArvore(NO* no, int valor)
 }
 
 NO* girarDireita(NO* no)
+
 {
-	// sua implementação vai aqui
-	return no;
+	//Pegar referência do futuro root da arvore/sub
+	NO* y = no->esq;
+
+	//Referência caso haja 
+	NO* r = y->dir;
+
+	//Balancea a arvore, fazendo, por exemplo: 
+	// ------ANTES ------
+//	     50 (no)
+//	     / \
+// 	   30   60
+//	   / \
+//    20  40
+
+	// ------ DEPOIS -----
+
+//	    30 (nova raiz)
+//		/ \
+//	  20   50
+//		   / \
+//		 40   60
+
+
+	y->dir = no;
+	no->esq = r;
+	
+	return y;
 }
 
 NO* girarEsquerda(NO* no)
 {
-	// sua implementação vai aqui
+	NO* y = no->dir;
+	NO* l = no->esq;
+
+	y->esq = no;
+	no->dir = l;
 	return no;
 }
 
